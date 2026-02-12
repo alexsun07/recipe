@@ -2,7 +2,10 @@
 
 ## docker image
 
-`rocm/sgl-dev:v0.5.8-rocm700-mi35x-20260202`
+`rocm/sgl-dev:v0.5.8-rocm700-mi35x-20260202`, start command:
+```
+docker run -it --name=pd-test --ipc=host --volume /root:/root --volume /mnt:/mnt --env=HUGGINGFACE_HUB_CACHE=/mnt/nfs/RAID/shared/huggingface/hub --network=host --privileged --workdir=/sgl-workspace rocm/sgl-dev:v0.5.8-rocm700-mi35x-20260202 /bin/bash
+```
 
 ## AINIC driver
 

@@ -15,12 +15,12 @@ class bcolors:
 
 cases = [
     # input tokens, output tokens, concurrency, step
-    (900, 400, 288, 16),
-    (1800, 400, 122, 2),
-    (3300, 400, 60, 2),
-    (18000, 400, 10, 1),
+    (900, 400, 240, 16),
+    (1800, 400, 108, 2),
+    (3300, 400, 48, 2),
+    (18000, 400, 4, 1),
     (900, 1800, 240, 16),
-    (150, 3800, 256, 16),
+    (150, 3800, 240, 16),
 ]
 results = {}
 beg = time.time()
@@ -29,7 +29,7 @@ for case in cases:
     prev_state = 'unknown'
     while True:
         num_prompts = concurrency * 5
-        cmd = f'python3 -m sglang.bench_serving --backend sglang --base-url http://127.0.0.1:8000 --dataset-name random --random-input {input_tokens} --random-output {output_tokens} --num-prompts {num_prompts} --max-concurrency={concurrency}'
+        cmd = f'python3 -m sglang.bench_serving --backend sglang --base-url http://127.0.0.1:8000 --dataset-name random --random-range-ratio 1.0 --random-input {input_tokens} --random-output {output_tokens} --num-prompts {num_prompts} --max-concurrency={concurrency}'
         print(f"Running command: {cmd}")
         output = subprocess.run(cmd, shell=True, capture_output=True, text=True)
         txt = output.stdout
