@@ -4,6 +4,21 @@
 
 `rocm/sgl-dev:v0.5.8-rocm700-mi35x-20260202`
 
+docker launch:
+```
+sudo docker run \
+    --name <your-docker-name> \
+    --network=host -d --ipc=host \
+    --device /dev/dri --device /dev/kfd --device=/dev/infiniBand \
+    --group-add video --cap-add SYS_PTRACE \
+    --security-opt seccomp=unconfined \
+    --shm-size 128G \
+    --privileged -it \
+    -v $HOME:$HOME -v /mnt:/mnt \
+    -e HUGGINGFACE_HUB_CACHE=/mnt/nfs/RAID/shared/huggingface/hub \
+    rocm/sgl-dev:v0.5.8-rocm700-mi35x-20260202
+```
+
 ## AINIC driver
 
 The driver is installed in docker image.

@@ -5,7 +5,6 @@ export SGLANG_USE_AITER=1
 # These env vars should adjust according to your environment
 export GLOO_SOCKET_IFNAME=enp193s0f1np1
 export SGLANG_HOST_IP=10.2.224.32
-export MC_GID_INDEX=2
 
 
 python -m sglang.launch_server \
